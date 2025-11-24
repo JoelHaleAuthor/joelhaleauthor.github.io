@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Joel Hale Author</title>
+	<link rel="stylesheet" href="./css/default.css" />
+	<script type="text/javascript" src="./scripts/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="./scripts/general.js"></script>
+    <script type="text/javascript">
+        function navigateTo(e){
+            var txt = e.target.innerText;
+            switch(txt){
+                case "HOME":
+                    loadView("home.html");
+                    break;
+                case "BOOKS":
+                    loadView("books.html");
+                    break;
+                case "ABOUT":
+                    loadView("about.html");
+                    break;
+                case "CONTACT":
+                    loadView("contact.html");
+                    break;
+            }
+        }
+
+        function loadView(viewPath){
+            console.log("Loading view: ./views/" + viewPath);
+            $("#main-content").load("./views/" + viewPath);
+        }
+
+        $(document).ready(function () {
+            $(".menu-bar button").on("click", navigateTo);
+            loadView("home.html")
+        });
+    </script>
+</head>
+<body>
+    <div style="color: rgb(102, 4, 84); font-size: 10em ; font-weight: bold ; text-align: center ;">
+        <span>Joel Hale</span>
+    </div>
+    <div class="menu-bar">
+        <button>HOME</button>
+        <button>BOOKS</button>
+        <button>ABOUT</button>
+        <button>CONTACT</button>
+    </div>
+    <div id="main-content"></div>
+</body>
+</html>

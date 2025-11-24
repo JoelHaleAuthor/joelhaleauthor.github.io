@@ -1,0 +1,125 @@
+html {
+	font-family: arial ;
+	font-size: 8pt ;
+	height: 98% ;
+	width: 98% ;
+}
+
+body {
+	background-color: lightblue ;
+	height: 98% ;
+	width: 98% ;
+}
+
+div.menu-bar{
+
+	text-align: center;
+	button {
+		background-color: transparent ;
+		color: darkblue ;
+		border: none ;
+		font-size: 2em ;
+		font-weight: bold ;
+		margin: 0 20px 0 20px
+	}
+}
+
+div.title {
+	font-size: 14pt ;
+	font-weight: bold ;
+	text-align: center ;
+	width: 95% ;
+}
+
+div.left-explorer {
+	border: solid darkblue 1px ;
+	display: inline-block ;
+	height: 800px ;
+	padding: 10px 0 0 10px ;
+	width: 34% ;
+}
+
+div.content-explorer {
+	border: solid lightblue 1px ;
+	display: inline-block ;
+	height: 800px ;
+	overflow: auto ;
+	padding: 10px 0 0 10px ;
+	width: 64% ;
+}
+
+div.left-explorer a {
+	display: block ;
+	font-size: 1.3em ;
+}
+
+table.generic-table tr.header td, table.generic-table tr td.header {
+	background-color: darkblue;
+	color: lightblue;
+	font-weight: bold;
+}
+
+table.generic-table tr.data td, table.generic-table tr td.data {
+	background-color: white;
+	color: darkblue;
+	cursor: pointer;
+}
+
+div.about-page {
+	width: 95%;
+	div.about-content-text {
+		font-size: 2.2em ;
+		margin: 100px auto 100px auto ;
+		width: 55%;
+	}
+	div.about-links {
+		font-size: 1.5em ;
+		margin: 20px auto 0 auto ;
+		width: 55% ;
+		a {
+			display: block ;
+			margin: 10px 0 10px 0 ;
+		}
+	}
+}
+
+div.contact-page {
+	width: 95% ;
+	div.email-link {
+		font-size: 2em ;
+	}
+
+	h1, div.email-link {
+		text-align: center ;
+		margin: 20px auto 0 auto ;
+
+	}
+
+	form#contact-form { 
+		margin: 0 auto 10px auto ;
+		width: 600px; 
+		label { 
+			display: block; 
+			margin: 12px 0 6px; 
+			font-weight: 600;
+			font-size: 1.5em; 
+		}
+		input, textarea, button { 
+			width: 100%; 
+			padding: 10px; 
+			font-size: 16px; 
+		}
+		textarea { 
+			min-height: 160px; 
+		}
+		p.success, p.error { 
+			margin-top: 12px; 
+			display: none; 
+		}
+		p.success { color: #0a7d32; }
+		p.error { color: #b00020; }
+		.sr-only { position: absolute; left: -9999px; }
+
+	}
+
+}

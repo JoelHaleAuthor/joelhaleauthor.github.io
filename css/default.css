@@ -65,6 +65,12 @@ table.generic-table tr.data td, table.generic-table tr td.data {
 	cursor: pointer;
 }
 
+div.home-text {
+	font-size: 2em ;
+	margin: 100px auto 100px auto ;
+	width: 55%;
+}
+
 div.about-page {
 	width: 95%;
 	div.about-content-text {
@@ -95,6 +101,7 @@ div.contact-page {
 
 	}
 
+
 	form#contact-form { 
 		margin: 0 auto 10px auto ;
 		width: 600px; 
@@ -121,5 +128,24 @@ div.contact-page {
 		.sr-only { position: absolute; left: -9999px; }
 
 	}
+}
 
+
+div.book-page {
+	display: flex ;
+	margin: 30px auto 30px auto ;
+	text-align: center;
+	width: 600px ;
+}	
+div.book-page div.book-item {
+		flex: 1 ;
+		margin: 20px ;
+		width: 250px ;	
+}
+div.book-page div.book-item a div.book-title {
+	font-weight: bold ;
+	font-size: 2em ;
+}
+div.book-page div.book-item a img {
+	width: 200px ;
 }

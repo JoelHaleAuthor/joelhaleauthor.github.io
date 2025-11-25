@@ -9,6 +9,13 @@ body {
 	background-color: lightblue ;
 	height: 98% ;
 	width: 98% ;
+	background-image: url('/media/PromotionalImage02.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-color: rgba(255, 255, 255, 0.8);
+	background-blend-mode: lighten;	
 }
 
 div.menu-bar{
@@ -74,9 +81,14 @@ div.home-text {
 div.about-page {
 	width: 95%;
 	div.about-content-text {
-		font-size: 2.2em ;
-		margin: 100px auto 100px auto ;
+		font-size: 2em ;
+		margin: 50px auto 50px auto ;
 		width: 55%;
+	}
+	div.about-columns {
+		display: flex;
+		margin: 10px auto 0 auto ;
+		width: 55% ;
 	}
 	div.about-links {
 		font-size: 1.5em ;
@@ -135,17 +147,45 @@ div.book-page {
 	display: flex ;
 	margin: 30px auto 30px auto ;
 	text-align: center;
-	width: 600px ;
+	width: 55%;
 }	
 div.book-page div.book-item {
-		flex: 1 ;
-		margin: 20px ;
-		width: 250px ;	
+	flex: 1 ;
+	margin: 20px ;
+	width: 250px ;	
 }
-div.book-page div.book-item a div.book-title {
+div.book-page div.book-item div.book-title {
 	font-weight: bold ;
 	font-size: 2em ;
 }
 div.book-page div.book-item a img {
 	width: 200px ;
+}
+
+div.book-page div.book-item div.series-image {
+	display: flex ;
+	margin: 20px ;
+	width: 250px ;
+}
+div.book-page div.book-item div.series-image a img {
+	flex: 1 ;
+	margin: 0 10px 0 10px ;
+	max-height: 150px ;
+	max-width: 100px ;
+}
+
+div.book-page-button {
+	background-color: darkblue ;
+	color: lightblue ;
+	cursor: pointer ;
+	font-size: 1.5em ;
+	margin: 10px auto 0 auto ;
+	padding: 10px ;
+	width: 80% ;
+}
+
+div.info-text {
+	font-size: 2em ;
+	margin: 15px auto -20px auto;
+	width: 55% ;
 }

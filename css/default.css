@@ -103,44 +103,45 @@ div.about-page {
 
 div.contact-page {
 	width: 95% ;
-	div.email-link {
-		font-size: 2em ;
+}
+div.contact-page div.email-link {
+	font-size: 2em ;
+}
+
+div.contact-page h1, div.contact-page div.email-link {
+	text-align: center ;
+	margin: 20px auto 0 auto ;
+
+}
+
+div.contact-page p#form-status {
+	border: solid teal 1px ;
+	color: teal ;
+	font-size: 2em ;
+	text-align: center ;
+	margin: 10px auto 10px auto ;
+	width: 55% ;
+}
+
+div.contact-page form { 
+	margin: 0 auto 10px auto ;
+	width: 600px; 
+	label { 
+		display: block; 
+		margin: 12px 0 6px; 
+		font-weight: 600;
+		font-size: 1.5em; 
 	}
-
-	h1, div.email-link {
-		text-align: center ;
-		margin: 20px auto 0 auto ;
-
+	input, textarea, button { 
+		width: 100%; 
+		padding: 10px; 
+		font-size: 16px; 
 	}
-
-
-	form#contact-form { 
-		margin: 0 auto 10px auto ;
-		width: 600px; 
-		label { 
-			display: block; 
-			margin: 12px 0 6px; 
-			font-weight: 600;
-			font-size: 1.5em; 
-		}
-		input, textarea, button { 
-			width: 100%; 
-			padding: 10px; 
-			font-size: 16px; 
-		}
-		textarea { 
-			min-height: 160px; 
-		}
-		p.success, p.error { 
-			margin-top: 12px; 
-			display: none; 
-		}
-		p.success { color: #0a7d32; }
-		p.error { color: #b00020; }
-		.sr-only { position: absolute; left: -9999px; }
-
+	textarea { 
+		min-height: 160px; 
 	}
 }
+
 
 
 div.book-page {

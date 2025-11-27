@@ -17,47 +17,59 @@ body {
 	background-color: rgba(255, 255, 255, 0.8);
 	background-blend-mode: lighten;	
 }
-
-div.menu-bar{
-
-	text-align: center;
-	button {
-		background-color: transparent ;
-		color: darkblue ;
-		border: none ;
-		font-size: 2em ;
-		font-weight: bold ;
-		margin: 0 20px 0 20px
-	}
+div#page-header{
+	border: none ;
+	padding: 0 ;
+	margin: 0 ;
 }
 
+div#main-content {
+	border-top: solid rgb(122, 138, 209) 1px ;
+	box-sizing: border-box;
+	overflow-y: auto;
+}
+
+div#main-content {
+  padding: 0 20% 0 20%; /* default padding */
+}
+
+/* Small devices (phones, less than 600px wide) */
+@media (max-width: 600px) {
+  div#main-content {
+    padding: 0 5% 0 5%; /* default padding */
+  }
+}
+
+/* Medium devices (tablets, 600px–1024px wide) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  div#main-content {
+    padding: 0 10% 0 10%; /* default padding */
+  }
+}
+
+/* Large devices (desktops, wider than 1024px) */
+@media (min-width: 1025px) {
+  div#main-content {
+    padding: 0 20% 0 20%; /* default padding */
+  }
+}
+
+div.menu-bar {
+	text-align: center;
+}
+div.menu-bar button {
+	background-color: transparent ;
+	color: darkblue ;
+	border: none ;
+	font-size: 2em ;
+	font-weight: bold ;
+	margin: 0 20px 0 20px
+}
 div.title {
 	font-size: 14pt ;
 	font-weight: bold ;
 	text-align: center ;
 	width: 95% ;
-}
-
-div.left-explorer {
-	border: solid darkblue 1px ;
-	display: inline-block ;
-	height: 800px ;
-	padding: 10px 0 0 10px ;
-	width: 34% ;
-}
-
-div.content-explorer {
-	border: solid lightblue 1px ;
-	display: inline-block ;
-	height: 800px ;
-	overflow: auto ;
-	padding: 10px 0 0 10px ;
-	width: 64% ;
-}
-
-div.left-explorer a {
-	display: block ;
-	font-size: 1.3em ;
 }
 
 table.generic-table tr.header td, table.generic-table tr td.header {
@@ -74,35 +86,54 @@ table.generic-table tr.data td, table.generic-table tr td.data {
 
 div.home-text {
 	font-size: 2em ;
-	margin: 100px auto 100px auto ;
-	width: 55%;
+	margin: 20px auto 20px auto ;
+}
+
+div.home-text img.right {
+	float: right;
+	margin: 0 0 10px 20px;
+	width: 200px; 
+	height: auto;
+	border-radius: 8px;
+}
+
+div.home-text img.left {
+	float: left;
+	margin: 0 20px 0 0;
+	width: 100px; 
+	height: auto;
+	border-radius: 8px;
 }
 
 div.about-page {
 	width: 95%;
-	div.about-content-text {
-		font-size: 2em ;
-		margin: 50px auto 50px auto ;
-		width: 55%;
-	}
-	div.about-columns {
-		display: flex;
-		margin: 10px auto 0 auto ;
-		width: 55% ;
-	}
-	div.about-links {
-		font-size: 1.5em ;
-		margin: 20px auto 0 auto ;
-		width: 55% ;
-		a {
-			display: block ;
-			margin: 10px 0 10px 0 ;
-		}
-	}
+}
+div.about-page div.about-content-text {
+	font-size: 2em ;
+	margin: 50px auto 50px auto ;
+}
+div.about-page div.about-columns {
+	display: flex;
+	margin: 10px auto 0 auto ;
+}
+div.about-page div.about-links {
+	font-size: 1.5em ;
+	margin: 20px auto 0 auto ;
+}
+div.about-page div.about-links a {
+	display: block ;
+	margin: 10px 0 10px 0 ;
+}
+div.about-page div.about-columns iframe {
+	border-top: solid transparent 15px ;
+	height: 200px ;
+	width: 250px ;
 }
 
+
+
 div.contact-page {
-	width: 95% ;
+	border: solid light blue 1px ;
 }
 div.contact-page div.email-link {
 	font-size: 2em ;
@@ -125,22 +156,23 @@ div.contact-page p#form-status {
 
 div.contact-page form { 
 	margin: 0 auto 10px auto ;
-	width: 600px; 
-	label { 
-		display: block; 
-		margin: 12px 0 6px; 
-		font-weight: 600;
-		font-size: 1.5em; 
-	}
-	input, textarea, button { 
-		width: 100%; 
-		padding: 10px; 
-		font-size: 16px; 
-	}
-	textarea { 
-		min-height: 160px; 
-	}
+	width: 600px; 	
 }
+div.contact-page form label { 
+	display: block; 
+	margin: 12px 0 6px; 
+	font-weight: 600;
+	font-size: 1.5em; 
+}
+div.contact-page form input, div.contact-page form textarea, div.contact-page form button { 
+	width: 100%; 
+	padding: 10px; 
+	font-size: 16px; 
+}
+div.contact-page form textarea { 
+	min-height: 160px; 
+}
+
 
 
 
@@ -148,7 +180,6 @@ div.book-page {
 	display: flex ;
 	margin: 30px auto 30px auto ;
 	text-align: center;
-	width: 55%;
 }	
 div.book-page div.book-item {
 	flex: 1 ;
@@ -188,5 +219,4 @@ div.book-page-button {
 div.info-text {
 	font-size: 2em ;
 	margin: 15px auto -20px auto;
-	width: 55% ;
 }

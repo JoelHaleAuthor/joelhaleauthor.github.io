@@ -31,19 +31,34 @@
 
         $(document).ready(function () {
             $(".menu-bar button").on("click", navigateTo);
-            loadView("home.html")
+            loadView("home.html");
+            window.addEventListener('load', resizeViewport);
+            window.addEventListener('resize', resizeViewport);
         });
+
+        function resizeViewport() {
+            const header = document.getElementById('page-header');
+            const content = document.getElementById('main-content');
+            const headerHeight = header.offsetHeight;
+            content.style.height = (window.innerHeight - headerHeight - 30) + 'px';
+        }
+
+
     </script>
 </head>
 <body>
-    <div style="color: rgb(102, 4, 84); font-size: 10em ; font-weight: bold ; text-align: center ;">
-        <span>Joel Hale</span>
-    </div>
-    <div class="menu-bar">
-        <button>HOME</button>
-        <button>BOOKS</button>
-        <button>ABOUT</button>
-        <button>CONTACT</button>
+    <div id="page-header">
+        <div style="color: rgb(102, 4, 84); font-size: 10em ; font-weight: bold ; text-align: center ;">
+            <img src="media/JFHFace00.jpg" alt="Joel Hale Author" title="Author Joel Hale"
+                style="max-height: 120px ; vertical-align: middle ; border-radius: 75px ; float: left ;"/>
+            <span>Joel Hale</span>
+        </div>
+        <div class="menu-bar">
+            <button>HOME</button>
+            <button>BOOKS</button>
+            <button>ABOUT</button>
+            <button>CONTACT</button>
+        </div>
     </div>
     <div id="main-content"></div>
 </body>

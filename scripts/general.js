@@ -89,3 +89,45 @@ function PopulateSelect(arr, optCtl, optSelect) {
     return sel;
 }
 
+function ExpandImage(img){
+    if (img.className == "expandable"){
+        var tp = document.getElementById("page-header").offsetHeight;
+        var oCalc = calcImgSize(img, tp);      
+        var height = img.style["height"];
+        var width = img.style["width"];
+        var maxWid = img.style["max-width"];
+        var maxHt = img.style["max-height"];
+        var ht = parseInt(document.body.offsetHeight * .8);
+        var mwd = parseInt(document.body.offsetWidth * .9);
+        var oldStyle = {"height": height, "width": width, "max-width": maxWid, "max-height": maxHt}; 
+        img["oldStyle"] = oldStyle;
+        img.style["height"] = oCalc["height"];
+        img.style["width"] = oCalc["width"];
+        img.style["max-width"] = oCalc["width"];
+        img.style["max-height"] = oCalc["height"];
+        img.style["top"] = tp + "px";
+        img.className = "expanded";
+    }
+    else if (img.className == "expanded"){
+        var oldStyle = img["oldStyle"];
+        img.style["max-width"] = oldStyle["max-width"];
+        img.style["max-height"] = oldStyle["max-height"];
+        img.style["width"] = oldStyle["width"];
+        img.style["height"] = oldStyle["height"];
+        img.style["top"] = "";
+        img.className = "expandable"; 
+    }
+}
+
+function calcImgSize(img, tp){
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const availableHeight = vh - tp;
+    const iw = img.naturalWidth;
+    const ih = img.naturalHeight;
+    const scale = Math.min(vw / iw, availableHeight / ih);
+    newWidth = parseInt(iw * scale) + "px";
+    newHeight = parseInt(ih * scale) + "px";
+    return { width: newWidth, height: newHeight  };
+}
+

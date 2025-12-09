@@ -222,17 +222,18 @@ div.info-text {
 }
 
 
-    img.expandable {
+    img.expandable, div.expandable {
       cursor: pointer;
+	  font-size: 1.0em
       transition: all 0.3s ease; /* smooth animation */
 	  z-index: 1;
     }
 
-    img.expanded {
+    img.expanded, div.expanded {
       position: absolute; 
       /*top: 100px ;
       left: 50px ;*/
-      transform: translate(-70%, 0);  
+	  font-size: 2.0em ;
       z-index: 1000;
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }

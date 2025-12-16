@@ -9,31 +9,29 @@
         window["rectArray"] = null;
         window["rectArrayIndex"] = -1;
         window["scores"] = [];
-        function IsFlickering(){
-            //console.log("IsFlickering");
+
+        function InfoMessage(){
             var rectArray = window["rectArray"];
             var index = window["rectArrayIndex"];
+            var len = rectArray.length;
+            var message = (len - index) + " remaining.";
+            document.getElementById("tdd-info-message").innerText = message;
+        }
+        function Flickering(isFlickering){
+            var rectArray = window["rectArray"];
+            var index = window["rectArrayIndex"];
+            var len = rectArray.length;
             var rect = rectArray[index];
             var rate = rect.rateHz;
-            var flickering = true;
-            var correct = (rate > 0);
-            //console.log({index: index, rateHz: rate, flickering: flickering, correct: correct});
-            window.scores.push({rateHz: rate, flickering: flickering, correct: correct });
+            var flickering = isFlickering;
+            var correct = (rate > 0 && isFlickering) || (rate == 0 && !isFlickering);
+            window["scores"].push({rateHz: rate, flickering: flickering, correct: correct });
             NextRect();
+            if (index == len - 1){
+                ShowScores();
+            }
         }
 
-        function NotFlickering(){
-            //console.log("NotFlickering");
-            var rectArray = window["rectArray"];
-            var index = window["rectArrayIndex"];
-            var rect = rectArray[index];
-            var rate = rect.rateHz;
-            var flickering = false;
-             var correct = (rate == 0);
-            //console.log({index: index, rateHz: rate, flickering: flickering, correct: correct});
-            window.scores.push({rateHz: rate, flickering: flickering, correct: correct });
-            NextRect();
-        }
         function NextRect(){
             var rectArray = window["rectArray"];
             var index = window["rectArrayIndex"];
@@ -47,6 +45,7 @@
             }
             window["rectArrayIndex"] = index;
             rectArray[index].start();
+            InfoMessage();
         }
         function Start(ctl){
             NextRect();
@@ -54,31 +53,70 @@
         }
         function ShowScores(){
             var scores = JSON.parse(JSON.stringify(window["scores"]));
-            scores.sort((a,b) => b.rateHz - a.rateHz);
-            var highScore = 1000;
-            var scoreNoLower = 1000;
+            scores.sort((a,b) => a.rateHz - b.rateHz);
+            var highScore = 0;
+            var scoreNoLower = 0;
+            var noErrorYet = true;
             scores.forEach(s => {
-                if (s.correct){
-                    if (highScore == 1000){
-                        highScore = s.rateHz;
-                        scoreNoLower = s.rateHz;
-                    }
-                    if (scoreNoLower == 1000){
+                if (s.correct){         
+                    highScore = s.rateHz;                  
+                    if (noErrorYet){
                         scoreNoLower = s.rateHz;
                     }
                 }
-                else if (scoreNoLower != 1000){
-                    if (s.rateHz < scoreNoLower){
-                        scoreNoLower = 1000;
-                    }
+                else {
+                    noErrorYet = false;
                 }
             });
             var mctl = document.getElementById("rect-result");
-            mctl.innerHTML = "Your highest confirmed CFF is: <b>" + highScore + " Hz</b><br/> Your highest unconfirmed CFF is: <b>" + scoreNoLower + " Hz</b>";
+            mctl.innerHTML = "Your highest confirmed CFF is: <b>" + scoreNoLower + " Hz</b><br/>";
+            mctl.innerHTML += "Your highest unconfirmed CFF is: <b>" + highScore + " Hz</b><br/>";
+            mctl.innerHTML += "(Confirmed means you were 100% correct up until that frequency)<br/>";
+            var fro = window["InfoMessageForCFF"](scoreNoLower, parseInt(document.getElementById("tdd-tester-age").value));
+            mctl.innerHTML += fro.message + "<br/>";
+            mctl.innerHTML += fro.ageContext;
             console.log({"highScore": highScore, "scoreNoLower": scoreNoLower,"Scores:": scores});            
         }
 
     </script>
+    <style type="text/css">
+        div.tdd-info-text{
+            border: solid blue 2px ; 
+            flex: 1; 
+            font-size: 1.6em; 
+            padding: 2%;
+        }
+        div.tdd-test-column{
+            border: solid blue 2px ; 
+            flex: 1; 
+            padding: 10% ;
+        }
+        div#rect-result{
+            color: darkgreen; 
+            font-size: 1.5em; 
+            font-weight: bold; 
+            text-align: center;
+        }
+        div.tdd-title{
+            color: darkgreen ;
+            font-size: 1.4em;             
+            font-weight: bold;
+        }
+        div.tdd-title button{
+            background-color: lightgreen;
+            border: solid darkgreen 1px ;
+            border-radius: 20px;
+            color: darkgreen ;
+            font-weight: bold;
+            width: 150px ;
+        }
+        div.tdd-title button:disabled{
+            background-color: lightgray;
+            border: solid darkgray 1px ;
+            border-radius: 20px;
+            color: darkgray ;
+        }
+    </style>
 </head>
 <body>
     <div id="page-header">
@@ -90,7 +128,7 @@
         <div style="font-size: 3em; font-weight: bold;text-align: center;">Temporal Dilation </div>
     </div>
     <div style="display: flex ;">
-        <div style="border: solid blue 2px ; flex: 1; font-size: 1.6em; padding: 2%;">
+        <div class="tdd-info-text">
             The main characters in the <i><b>Lost and Found</b></i> series have enhanced Temporal Dilation (TD) abilities. 
             Everyone has this ability to some extent or another. If, in a moment of danger, you have experienced time seeming to slow down, then
             you have experienced this same phenomenom.
@@ -110,20 +148,24 @@
             while extremely fast predators such as caracals or falcons can reach 100-150 Hz or higher. CFF decreases with age in humans. Humans with 
             enhanced TD occupy the upper end of this continuum, able to react and perceive events at speeds approaching the fastest animals in nature.
         </div>
-        <div style="border: solid blue 2px ; flex: 1; padding: 10% ">
-            <div class="title">
+        <div class="tdd-test-column">
+            <div class="tdd-title">
                 Measure Your Own CFF - you will see ovals of various shades. Repond using the buttons below whether the oval is flickering or not.
                 Click the 'SCORES' button to see your results. Refresh the screen to redo the test, especially after the first attempt.
                 Click 'START' to begin.
                 <br/>
                 <button onclick="Start(this)">START</button><button onclick="ShowScores()">SCORES</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="tdd-tester-age">Your Age (years): </label>
+                <input id="tdd-tester-age" type="number" size="3" value="30" style="width:100px;" />
+                <span id="tdd-info-message"></span>
             </div>
             <div id="main-rect-content"></div>
             <div style="text-align: center ;">
-                <button class="CFFButton" onclick="IsFlickering()">Oval <b>IS&nbsp;</b>Flickering</button>
-                <button class="CFFButton" onclick="NotFlickering()">Oval is <b>NOT&nbsp;</b>Flickering</button>
+                <button class="CFFButton" onclick="Flickering(true)">Oval <b>IS&nbsp;</b>Flickering</button>
+                <button class="CFFButton" onclick="Flickering(false)">Oval is <b>NOT&nbsp;</b>Flickering</button>
             </div>
-            <div id="rect-result" style="color: darkgreen; font-size: 1.5em; font-weight: bold; text-align: center;">Results will appear here</div>
+            <div id="rect-result">Results will appear here</div>
         </div>
     </div>
     <script type="module">
@@ -157,8 +199,7 @@
         } 
        FlickerRect.shuffleArray(rectArray);
        window["rectArray"] = rectArray;
-        //rectArray.forEach((r, i) => setTimeout(() => r.start(), i * 50));
-        //NextRect();
+       window["InfoMessageForCFF"] = FlickerRect.interpret;
     </script>
 
 </body>

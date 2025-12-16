@@ -237,3 +237,36 @@ div.info-text {
       z-index: 1000;
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
+
+div#main-rect-content {
+	background-color: #5555dd ;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	height: 200px; 
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto 0 auto ;
+	padding: 10px ;
+}
+
+div.flicker-rect {	
+	border-radius: 40px;
+	flex: 0 0 auto;
+	color: yellow ;
+	font-size: 2em;
+	font-weight: bold;
+	margin: 50px ;	
+	text-align: center;
+	vertical-align: middle;
+}
+
+button.CFFButton {
+	background-color: darkblue ;
+	color: lightblue ;
+	border: none ;
+	font-size: 1.5em ;
+	margin: 10px auto 0 auto ;
+	padding: 10px ;
+	width: 40% ;
+}

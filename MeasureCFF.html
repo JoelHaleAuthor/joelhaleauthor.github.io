@@ -58,8 +58,8 @@
             var scoreNoLower = 0;
             var noErrorYet = true;
             scores.forEach(s => {
-                if (s.correct){         
-                    highScore = s.rateHz;                  
+                if (s.correct){
+                    highScore = s.rateHz;
                     if (noErrorYet){
                         scoreNoLower = s.rateHz;
                     }
@@ -75,31 +75,53 @@
             var fro = window["InfoMessageForCFF"](scoreNoLower, parseInt(document.getElementById("tdd-tester-age").value));
             mctl.innerHTML += fro.message + "<br/>";
             mctl.innerHTML += fro.ageContext;
-            console.log({"highScore": highScore, "scoreNoLower": scoreNoLower,"Scores:": scores});            
+            console.log({"highScore": highScore, "scoreNoLower": scoreNoLower,"Scores:": scores});
         }
+
+        function TabClick(btn, darr){
+            darr.forEach(id => {
+                document.getElementById(id).style.display = (darr[0] == id) ? 'flex' : 'none';
+            });
+            btn.parentElement.querySelectorAll('button.tdd-tab').forEach(b => {
+                b.classList.remove('active');
+            });
+            btn.classList.add('active');
+        }
+
 
     </script>
     <style type="text/css">
+        div#tdd-diet-info, div#tdd-activities{
+            border: solid blue 2px ;
+            display: flex ;
+            font-size: 1.6em ;
+            padding: 10px ;
+        }
+        div#tdd-activities{
+            height: 60%;
+            overflow-y: scroll;
+        }
+
         div.tdd-info-text{
-            border: solid blue 2px ; 
-            flex: 1; 
-            font-size: 1.6em; 
+            border: solid blue 2px ;
+            flex: 1;
+            font-size: 1.6em;
             padding: 2%;
         }
         div.tdd-test-column{
-            border: solid blue 2px ; 
-            flex: 1; 
+            border: solid blue 2px ;
+            flex: 1;
             padding: 10% ;
         }
         div#rect-result{
-            color: darkgreen; 
-            font-size: 1.5em; 
-            font-weight: bold; 
+            color: darkgreen;
+            font-size: 1.5em;
+            font-weight: bold;
             text-align: center;
         }
         div.tdd-title{
             color: darkgreen ;
-            font-size: 1.4em;             
+            font-size: 1.4em;
             font-weight: bold;
         }
         div.tdd-title button{
@@ -116,6 +138,21 @@
             border-radius: 20px;
             color: darkgray ;
         }
+        button.tdd-tab {
+            background-color: lightgray;
+            border: solid gray 1px ;
+            border-radius: 10px;
+            color: gray ;
+            font-weight: bold;
+            margin-left: 10px ;
+            padding: 5px 10px ;
+            width: 270px ;
+        }
+        button.tdd-tab.active {
+            background-color: blue;
+            color: lightblue ;
+        }
+
     </style>
 </head>
 <body>
@@ -125,27 +162,32 @@
                 style="max-height: 120px ; vertical-align: middle ; border-radius: 75px ; float: left ;"/>
             <span>Joel Hale</span>
         </div>
-        <div style="font-size: 3em; font-weight: bold;text-align: center;">Temporal Dilation </div>
+        <div style="font-size: 3em; font-weight: bold;text-align: center;">
+            Temporal Dilation
+            <button onclick="TabClick(this, ['tdd-test-and-info', 'tdd-diet-info', 'tdd-activities']);" class="tdd-tab active">Information and Test</button>
+            <button onclick="TabClick(this, ['tdd-diet-info', 'tdd-test-and-info', 'tdd-activities']);" class="tdd-tab">Diet to Help Temporal Dilation</button>
+            <button onclick="TabClick(this, ['tdd-activities', 'tdd-diet-info', 'tdd-test-and-info']);" class="tdd-tab">Games/Drills to Help Temporal Dilation</button>
+        </div>
     </div>
-    <div style="display: flex ;">
+    <div id="tdd-test-and-info" style="display: flex ;">
         <div class="tdd-info-text">
-            The main characters in the <i><b>Lost and Found</b></i> series have enhanced Temporal Dilation (TD) abilities. 
+            The main characters in the <i><b>Lost and Found</b></i> series have enhanced Temporal Dilation (TD) abilities.
             Everyone has this ability to some extent or another. If, in a moment of danger, you have experienced time seeming to slow down, then
             you have experienced this same phenomenom.
             <br/><br/>
-            Temporal Dilation is the brain's natural ability to adjust the subjective flow of time, stretching or compressing 
-            perception to match the demands of a situation. Everyone experiences it to some degree: moments can seem to slow in 
-            danger, or long, monotonous periods can pass in a flash. Most people slip into TD without realizing it, while those 
-            with enhanced TD enter it more easily and can maintain it with greater precision, allowing for extraordinarily fast 
-            reactions and heightened temporal acuity. Some individuals may never notice it under normal conditions, though the 
+            Temporal Dilation is the brain's natural ability to adjust the subjective flow of time, stretching or compressing
+            perception to match the demands of a situation. Everyone experiences it to some degree: moments can seem to slow in
+            danger, or long, monotonous periods can pass in a flash. Most people slip into TD without realizing it, while those
+            with enhanced TD enter it more easily and can maintain it with greater precision, allowing for extraordinarily fast
+            reactions and heightened temporal acuity. Some individuals may never notice it under normal conditions, though the
             potential exists in most humans given the right circumstances.<br/><br/>
-            TD can be measured indirectly through Critical Flicker Fusion Frequency (CFF), which gauges how quickly the brain 
-            perceives flickering light before it appears steady. Typical humans fall between 35-60 Hz, elite athletes like Simone 
-            Biles or Bruce Lee may reach 70-100 Hz under peak focus, and those with enhanced TD can exceed these levels, sometimes 
-            approaching hundreds of hertz. Elevated CFF is a measurable sign of the brain's accelerated temporal processing, though 
+            TD can be measured indirectly through Critical Flicker Fusion Frequency (CFF), which gauges how quickly the brain
+            perceives flickering light before it appears steady. Typical humans fall between 35-60 Hz, elite athletes like Simone
+            Biles or Bruce Lee may reach 70-100 Hz under peak focus, and those with enhanced TD can exceed these levels, sometimes
+            approaching hundreds of hertz. Elevated CFF is a measurable sign of the brain's accelerated temporal processing, though
             it is a symptom rather than the cause of TD.<br/><br/>
-            Across species, TD exists on a spectrum. Slow animals like sloths register CFFs as low as 10-20 Hz, 
-            while extremely fast predators such as caracals or falcons can reach 100-150 Hz or higher. CFF decreases with age in humans. Humans with 
+            Across species, TD exists on a spectrum. Slow animals like sloths register CFFs as low as 10-20 Hz,
+            while extremely fast predators such as caracals or falcons can reach 100-150 Hz or higher. CFF decreases with age in humans. Humans with
             enhanced TD occupy the upper end of this continuum, able to react and perceive events at speeds approaching the fastest animals in nature.
         </div>
         <div class="tdd-test-column">
@@ -167,6 +209,137 @@
             </div>
             <div id="rect-result">Results will appear here</div>
         </div>
+    </div>
+    <div id="tdd-diet-info" style="display: none;">
+        <div class="content">
+            <p class="intro">
+              The best foods for improving reaction time and enhancing adaptive "slow-time" perception are those rich in omega-3 fatty acids, antioxidants, and nutrients that support brain health and stable energy. These foods sharpen focus, speed up cognitive processing, and create the mental clarity athletes and performers often describe as "time slowing down."
+            </p>
+
+            <section class="foods">
+              <h2 class="section-title">Brain-Boosting Foods for Reaction Time &amp; Time Perception</h2>
+              <ul class="food-list">
+                <li><strong>Fatty Fish (salmon, mackerel, sardines):</strong> High in omega-3s (EPA &amp; DHA), which improve neural communication, memory, and cognitive speed.</li>
+                <li><strong>Berries (blueberries, strawberries, blackberries):</strong> Flavonoids and anthocyanins reduce oxidative stress and improve reaction times.</li>
+                <li><strong>Leafy Greens (spinach, kale, broccoli):</strong> Provide lutein, beta-carotene, folate, and vitamin K, all linked to slower cognitive decline and sharper focus.</li>
+                <li><strong>Walnuts &amp; Other Nuts:</strong> Rich in antioxidants, vitamin E, and healthy fats that support neurotransmitter function and protect against age-related decline.</li>
+                <li><strong>Turmeric (curcumin):</strong> Anti-inflammatory and antioxidant properties improve brain plasticity and may enhance focus under stress.</li>
+                <li><strong>Eggs:</strong> Contain choline, essential for acetylcholine production, a neurotransmitter critical for reaction speed and memory.</li>
+                <li><strong>Whole Grains &amp; Complex Carbs (quinoa, oats, sweet potatoes):</strong> Provide steady glucose release, preventing energy crashes that impair reaction time.</li>
+                <li><strong>Avocados:</strong> Healthy fats and potassium improve blood flow and support sustained cognitive performance.</li>
+                <li><strong>Dark Chocolate (in moderation):</strong> Flavonoids and caffeine boost alertness and processing speed.</li>
+                <li><strong>Hydrating Foods (cucumbers, watermelon):</strong> Even mild dehydration slows reaction time; water-rich foods help maintain peak performance.</li>
+              </ul>
+            </section>
+
+            <section class="suggestions">
+              <h2 class="section-title">Practical Suggestions</h2>
+              <ol class="suggestion-list">
+                <li><strong>Eat fatty fish 2-3 times per week</strong> for omega-3 support.</li>
+                <li><strong>Add a handful of berries daily</strong> to improve memory and reaction speed.</li>
+                <li><strong>Include leafy greens</strong> in at least one meal per day.</li>
+                <li><strong>Snack on walnuts or almonds</strong> for sustained brain energy.</li>
+                <li><strong>Use turmeric</strong> in cooking for anti-inflammatory brain benefits.</li>
+                <li><strong>Choose complex carbs</strong> over refined sugars to stabilize focus.</li>
+                <li><strong>Stay hydrated</strong> with water and hydrating foods to prevent cognitive dips.</li>
+              </ol>
+              <p class="bottom-line">
+                <strong>Bottom line:</strong> Foods that support <em>neural communication, antioxidant defense, and stable energy</em> are the most effective for sharpening reaction time and creating the mental clarity that feels like "slowing down time."
+              </p>
+            </section>
+          </div>
+    </div>
+    <div id="tdd-activities" style="display: none;">
+        <div class="reaction-time-guide">
+            <h2 class="section-title">Action recommendations to improve reaction time and cultivate "slow-time" adaptive performance</h2>
+            <p class="intro">
+              These evidence-informed practices combine physical drills, cognitive training, vision work, mindfulness, sleep, and nutrition to sharpen perception, speed, and situational awareness. Use short, consistent sessions and track progress over time.
+            </p>
+
+            <section class="games">
+              <h3 class="subsection-title">Practice with reaction games</h3>
+              <ul class="link-list">
+                <li><strong>ReflexForge:</strong> <a href="https://reflexforge.com/" target="_blank" rel="noopener">https://reflexforge.com/</a></li>
+                <li><strong>AimTrainer.io:</strong> <a href="https://aimtrainer.io/" target="_blank" rel="noopener">https://aimtrainer.io/</a></li>
+                <li><strong>MemoryMatching:</strong> <a href="https://memorymatching.com/" target="_blank" rel="noopener">https://memorymatching.com/</a></li>
+              </ul>
+              <p class="tip"><strong>Tip:</strong> Train 5-10 minutes, 3-5 days/week. Prioritize speed-plus-accuracy and vary drills to avoid overfitting.</p>
+            </section>
+
+            <section class="recommendations">
+              <h3 class="subsection-title">Core training recommendations</h3>
+              <ol class="recommendation-list">
+                <li><strong>Agility drills:</strong> Use cone shuttles, mirror drills, and quick direction changes to train rapid motor responses.</li>
+                <li><strong>Explosive relaxation:</strong> Practice fast tense-release cycles to reduce co-contraction and enable quicker movement onset.</li>
+                <li><strong>Startle-to-action drills:</strong> Respond to unpredictable auditory/visual cues with a single decisive movement (e.g., sprint, reach, click).</li>
+                <li><strong>Sports-specific scenarios:</strong> Simulate real contexts (ball toss reaction, rally openers, driving hazards) for transfer to performance.</li>
+                <li><strong>Choice RT training:</strong> Use go/no-go and multi-choice tasks to speed stimulus discrimination and decision selection.</li>
+                <li><strong>Cognitive speed games:</strong> Alternate simple RT (single key) with choice RT (2-4 keys) to build both raw speed and accuracy.</li>
+                <li><strong>Working memory sprints:</strong> Pair n-back or sequence recall with timed responses to maintain speed under load.</li>
+                <li><strong>Attentional control:</strong> Use Stroop/flanker tasks to reduce interference and keep actions clean under pressure.</li>
+                <li><strong>Visual tracking:</strong> Train smooth pursuit and saccades (follow a moving dot, rapid target jumps) to improve prediction.</li>
+                <li><strong>Depth & timing:</strong> Practice hand-eye timing (ball drops, metronome catches) to refine anticipatory actions.</li>
+                <li><strong>Peripheral awareness:</strong> Expand visual field with two-target drills at the edge of gaze; react to the first cue seen.</li>
+                <li><strong>Micro-meditation:</strong> 2-5 minutes of focused breathing pre-practice to reduce cognitive noise and stabilize attention.</li>
+                <li><strong>Performance breathing:</strong> Box or cadence breathing (4-4-4-4; or 4-7-8) between bouts to keep arousal optimal.</li>
+                <li><strong>Visualization reps:</strong> Mentally rehearse fast, clean responses to specific cues; include varied angles and timing.</li>
+                <li><strong>Flow scaffolding:</strong> Set clear goals, tight feedback loops, and slightly-above-skill challenges to enter the "slow-time" zone.</li>
+                <li><strong>Warm-up priming:</strong> Dynamic movements + 1-2 short RT blocks (30-60 seconds) before key sessions.</li>
+                <li><strong>Cadence variability:</strong> Randomize cue timing to break rhythm prediction; add occasional double-cues to test inhibition.</li>
+                <li><strong>Progressive complexity:</strong> Increase stimulus options (color/shape/sound) once accuracy &ge; 90% at current speed.</li>
+                <li><strong>Sleep prioritization:</strong> Aim for consistent 7-9 hours; protect pre-performance sleep for peak RT and vigilance.</li>
+                <li><strong>Hydration:</strong> Begin sessions euhydrated; even mild dehydration impairs RT-sip water periodically.</li>
+                <li><strong>Nutrition foundation:</strong> Emphasize omega-3s (fatty fish, walnuts), antioxidants (berries, cocoa), and steady energy (complex carbs).</li>
+                <li><strong>Caffeine timing:</strong> Optional 1-2 hours pre-practice; avoid excessive doses and late-day intake that disrupt sleep.</li>
+                <li><strong>Glycemic stability:</strong> Favor low-to-moderate GI meals pre-session to prevent crashes that slow processing.</li>
+                <li><strong>Posture & stance:</strong> Train ready positions (neutral spine, soft knees, balanced weight) for faster initiation.</li>
+                <li><strong>Reduce latency traps:</strong> Minimize unnecessary pre-movement checks; automate setup to cut milliseconds.</li>
+                <li><strong>Stress inoculation:</strong> Introduce mild stakes (timer, score, peer watch) to practice calm speed under pressure.</li>
+                <li><strong>Recovery cycles:</strong> Use short, high-quality blocks (30-90 sec) with equal rest to maintain peak speed.</li>
+                <li><strong>Accuracy gate:</strong> Only increase speed when errors are controlled; speed without precision doesn’t transfer.</li>
+                <li><strong>Periodic deload:</strong> One lighter week every 4-6 weeks to consolidate gains and prevent overtraining.</li>
+                <li><strong>Objective tracking:</strong> Log millisecond RT, hit rate, and false alarms; review weekly to adjust drills.</li>
+              </ol>
+            </section>
+
+            <section class="mini-plans">
+              <h3 class="subsection-title">Quick training blocks (copy-paste routines)</h3>
+              <ul class="routine-list">
+                <li>
+                  <strong>5-minute primer:</strong>
+                  <span>2 min micro-meditation &rarr; 2 x 45 sec simple RT (ReflexForge) &rarr; 2 x 45 sec choice RT (AimTrainer.io)</span>
+                </li>
+                <li>
+                  <strong>10-minute mixed:</strong>
+                  <span>3 min dynamic warm-up &rarr; 2 min visual tracking &rarr; 2 x 60 sec Stroop/flanker (MemoryMatching) &rarr; 2 x 60 sec startle-to-action</span>
+                </li>
+                <li>
+                  <strong>Game day:</strong>
+                  <span>2 min cadence breathing &rarr; 60 sec accuracy gate RT &rarr; 60 sec flow visualization &rarr; 60 sec explosive relaxation</span>
+                </li>
+              </ul>
+            </section>
+
+            <section class="notes">
+              <h3 class="subsection-title">Notes</h3>
+              <ul class="note-list">
+                <li><strong>Consistency beats volume:</strong> Short daily sessions outperform occasional long ones.</li>
+                <li><strong>Vary stimuli:</strong> Change colors, sounds, positions, and intervals to avoid predictability.</li>
+                <li><strong>Prioritize safety:</strong> Warm up before explosive drills; stop if form degrades.</li>
+              </ul>
+            </section>
+            <hr/>
+            <div class="td-embed" aria-label="Temporal Dilation walkthrough video">
+                <iframe src="https://www.youtube.com/embed/FseZTMFfRBU"
+                    title="Temporal Dilation explained for adaptive perception"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+                <div>There are several peer reviewed studies to confirm the above video</div>
+            </div>
+
+          </div>
     </div>
     <script type="module">
         import { FlickerRect } from './scripts/FlickerRect.js';
@@ -196,10 +369,11 @@
                 });
                 rectArray.push(rect);
             }
-        } 
+        }
        FlickerRect.shuffleArray(rectArray);
        window["rectArray"] = rectArray;
        window["InfoMessageForCFF"] = FlickerRect.interpret;
     </script>
 
 </body>
+</html>

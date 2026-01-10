@@ -34,9 +34,25 @@
 
         $(document).ready(function () {
             $(".menu-bar button").on("click", navigateTo);
-            loadView("home.html");
+
             window.addEventListener('load', resizeViewport);
             window.addEventListener('resize', resizeViewport);
+            var pVal = checkParams("book");
+            if (pVal !== ""){
+                switch(pVal){
+                    case "1":
+                        loadView("book1.html");
+                        break;
+                    case "2":
+                        loadView("book2.html");
+                        break;
+                    case "3":
+                        loadView("book3.html");
+                        break;
+                }
+            }   else {
+                loadView("home.html");
+            }
         });
 
         function resizeViewport() {
@@ -46,6 +62,13 @@
             content.style.height = (window.innerHeight - headerHeight - 30) + 'px';
         }
 
+        function checkParams(pName){
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has(pName)){
+                return urlParams.get(pName);
+            }
+            return "";
+        }
 
     </script>
 </head>

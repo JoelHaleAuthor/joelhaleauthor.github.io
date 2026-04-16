@@ -88,10 +88,15 @@
             btn.classList.add('active');
         }
 
+        function TabTestCFRT(onDiv, offDiv){
+            document.getElementById(onDiv).style.display = 'block';
+            document.getElementById(offDiv).style.display = 'none';
+        }
+
 
     </script>
     <style type="text/css">
-        div#tdd-diet-info, div#tdd-activities{
+        div#tdd-diet-info, div#tdd-activities, div#tdd-babe-ruth {
             border: solid blue 2px ;
             display: flex ;
             font-size: 1.6em ;
@@ -100,6 +105,14 @@
         div#tdd-activities{
             height: 60%;
             overflow-y: scroll;
+        }
+        div#tdd-babe-ruth {
+            height: 60%;
+            width: 99%;
+        }
+        div#tdd-babe-ruth iframe {
+            height: 99%;
+            width: 99%;
         }
 
         div.tdd-info-text{
@@ -118,6 +131,17 @@
             font-size: 1.5em;
             font-weight: bold;
             text-align: center;
+        }
+        div#reaction-time-message, span#reaction-time-result {
+            color: white;
+            height: 100px ;
+            font-size: 1.3em;
+            font-weight: bold;
+            padding: 10px ;
+        }
+        span#reaction-time-result {
+            color: darkgreen;
+
         }
         div.tdd-title{
             color: darkgreen ;
@@ -164,9 +188,10 @@
         </div>
         <div style="font-size: 3em; font-weight: bold;text-align: center;">
             Temporal Dilation
-            <button onclick="TabClick(this, ['tdd-test-and-info', 'tdd-diet-info', 'tdd-activities']);" class="tdd-tab active">Information and Test</button>
-            <button onclick="TabClick(this, ['tdd-diet-info', 'tdd-test-and-info', 'tdd-activities']);" class="tdd-tab">Diet to Help Temporal Dilation</button>
-            <button onclick="TabClick(this, ['tdd-activities', 'tdd-diet-info', 'tdd-test-and-info']);" class="tdd-tab">Games/Drills to Help Temporal Dilation</button>
+            <button onclick="TabClick(this, ['tdd-test-and-info', 'tdd-diet-info', 'tdd-activities', 'tdd-babe-ruth']);" class="tdd-tab active">Information and Test</button>
+            <button onclick="TabClick(this, ['tdd-diet-info', 'tdd-test-and-info', 'tdd-activities','tdd-babe-ruth']);" class="tdd-tab">Diet to Help Temporal Dilation</button>
+            <button onclick="TabClick(this, ['tdd-activities', 'tdd-diet-info', 'tdd-test-and-info', 'tdd-babe-ruth']);" class="tdd-tab">Games/Drills to Help Temporal Dilation</button>
+            <button onclick="TabClick(this, ['tdd-babe-ruth', 'tdd-activities', 'tdd-diet-info', 'tdd-test-and-info',]);" class="tdd-tab">Babe Ruth</button>
         </div>
     </div>
     <div id="tdd-test-and-info" style="display: flex ;">
@@ -191,23 +216,46 @@
             enhanced TD occupy the upper end of this continuum, able to react and perceive events at speeds approaching the fastest animals in nature.
         </div>
         <div class="tdd-test-column">
-            <div class="tdd-title">
-                Measure Your Own CFF - you will see ovals of various shades. Repond using the buttons below whether the oval is flickering or not.
-                Click the 'SCORES' button to see your results. Refresh the screen to redo the test, especially after the first attempt.
-                Click 'START' to begin.
-                <br/>
-                <button onclick="Start(this)">START</button><button onclick="ShowScores()">SCORES</button>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <label for="tdd-tester-age">Your Age (years): </label>
-                <input id="tdd-tester-age" type="number" size="3" value="30" style="width:100px;" />
-                <span id="tdd-info-message"></span>
+            <div style="border-bottom: lightgray solid 10px;">
+                <button onclick="TabTestCFRT('cff-test', 'reaction-test')">Flicker Fusion</button>
+                <button onclick="TabTestCFRT('reaction-test', 'cff-test')">Reaction Time</button>
             </div>
-            <div id="main-rect-content"></div>
-            <div style="text-align: center ;">
-                <button class="CFFButton" onclick="Flickering(true)">Oval <b>IS&nbsp;</b>Flickering</button>
-                <button class="CFFButton" onclick="Flickering(false)">Oval is <b>NOT&nbsp;</b>Flickering</button>
+            <div id="cff-test" style="display: block;">
+                <div class="tdd-title">
+                    Measure Your Own CFF - you will see ovals of various shades. Repond using the buttons below whether the oval is flickering or not.
+                    Click the 'SCORES' button to see your results. Refresh the screen to redo the test, especially after the first attempt.
+                    Click 'START' to begin.
+                    <br/>
+                    <button onclick="Start(this)">START</button><button onclick="ShowScores()">SCORES</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label for="tdd-tester-age">Your Age (years): </label>
+                    <input id="tdd-tester-age" type="number" size="3" value="30" style="width:100px;" />
+                    <span id="tdd-info-message"></span>
+                </div>
+                <div id="main-rect-content"></div>
+                <div style="text-align: center ;">
+                    <button class="CFFButton" onclick="Flickering(true)">Oval <b>IS&nbsp;</b>Flickering</button>
+                    <button class="CFFButton" onclick="Flickering(false)">Oval is <b>NOT&nbsp;</b>Flickering</button>
+                </div>
+                <div id="rect-result">Results will appear here</div>
             </div>
-            <div id="rect-result">Results will appear here</div>
+            <div id="reaction-test" style="display: none;">
+                <div class="tdd-title">Measure Your Reaction Time</div>
+                <div id="reaction-time-message" style="background-color: lightgray ;">
+                    Wait for green... Then click this box as fast as you can!<br />
+                    Your reaction time will be displayed in milliseconds.<br />
+                    Try to get under 250 ms for good temporal dilation potential!
+                </div>
+                <button id="RTstartBtn">Start Test</button> <span id="reaction-time-result" style="font-size: 1.2em; padding: 10px ;"></span>
+                <div>
+                    <table border="0" style="font-size: 1.4em;">
+                        <tr><td>Good / above average</td><td> 0 - 250 ms </td></tr>
+                        <tr><td>Average adult</td><td> 250 - 300 ms</td></tr>
+                        <tr><td>Slower (but normal)</td><td> 300 - 400 ms</td></tr>
+                        <tr><td>Very slow / distracted</td><td> 400+ ms</td></tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
     <div id="tdd-diet-info" style="display: none;">
@@ -341,8 +389,17 @@
 
           </div>
     </div>
+    <div id="tdd-babe-ruth" style="display: none; width: 100%;">
+        <div class="content" style="width: 100%;">
+            <iframe src="https://psychclassics.yorku.ca/Fullerton/"
+                title="Why Babe Ruth is Greatest Home-Run Hitter"
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
     <script type="module">
         import { FlickerRect } from './scripts/FlickerRect.js';
+        import { ReactionTimer } from './scripts/ReactionTime.js';
 
         var rectArray = [];
         for (var i = 0; i <= 88; i += 4) {
@@ -373,6 +430,15 @@
        FlickerRect.shuffleArray(rectArray);
        window["rectArray"] = rectArray;
        window["InfoMessageForCFF"] = FlickerRect.interpret;
+
+       window["reactionTimer"] = new ReactionTimer({
+        targetElement: document.getElementById('reaction-time-message'),
+        resultElement: document.getElementById('reaction-time-result')
+       });
+        document.getElementById('RTstartBtn').addEventListener('click', function(){
+                window["reactionTimer"].start();
+                document.getElementById('reaction-time-message').style.backgroundColor = 'red';
+        });
     </script>
 
 </body>

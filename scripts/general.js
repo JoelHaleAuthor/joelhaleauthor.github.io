@@ -44,7 +44,7 @@ function MakeTableFromObject(obj) {
     }
     else {
         for (var key in obj) { keys.push(key); }
-        var td, tr;        
+        var td, tr;
         for (var c = 0; c < keys.length; c++) {
             var key = keys[c];
             tr = tbl.insertRow(-1);
@@ -64,7 +64,7 @@ function MakeTableFromObject(obj) {
                 td.innerHTML = JSON.stringify(val);
             }
             else {
-                td.innerHTML = val;                
+                td.innerHTML = val;
             }
         }
     }
@@ -93,7 +93,7 @@ function ExpandImage(img){
     if (img.className == "expandable"){
         var parentWidth = parseInt(img.parentElement.parentElement.offsetWidth);
         var tp = document.getElementById("page-header").offsetHeight;
-        var oCalc = calcImgSize(img, tp);      
+        var oCalc = calcImgSize(img, tp);
         var height = img.style["height"];
         var width = img.style["width"];
         var left = img.style["left"];
@@ -101,7 +101,7 @@ function ExpandImage(img){
         var maxHt = img.style["max-height"];
         //var ht = parseInt(document.body.offsetHeight * .8);
         //var mwd = parseInt(document.body.offsetWidth * .9);
-        var oldStyle = {"height": height, "width": width, "max-width": maxWid, "max-height": maxHt, "left": left}; 
+        var oldStyle = {"height": height, "width": width, "max-width": maxWid, "max-height": maxHt, "left": left};
         var newWidth = oCalc["width"];
         if (newWidth > parentWidth){
             newWidth = parentWidth - 30;
@@ -126,7 +126,7 @@ function ExpandImage(img){
         img.style["height"] = oldStyle["height"];
         img.style["left"] = oldStyle["left"];
         img.style["top"] = "";
-        img.className = "expandable"; 
+        img.className = "expandable";
     }
 }
 

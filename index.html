@@ -8,7 +8,10 @@
 	<script type="text/javascript" src="./scripts/general.js"></script>
     <script type="text/javascript">
         function navigateTo(e){
-            var txt = e.target.innerText;
+            var txt = "";
+            if (e.innerText){ txt = e.target.innerText; }
+            else { txt = e;}
+
             switch(txt){
                 case "HOME":
                     loadView("home.html");
@@ -24,6 +27,15 @@
                     break;
                 case "Temporal Dilation Info":
                     window.open("MeasureCFF.html", "_blank");
+                    break;
+                case "1":
+                    loadView("book1.html");
+                    break;
+                case "2":
+                    loadView("book2.html");
+                    break;
+                case "3":
+                    loadView("book3.html");
                     break;
             }
         }
@@ -86,6 +98,13 @@
             <button>ABOUT</button>
             <button>CONTACT</button>
             <button>Temporal Dilation Info</button>
+            <select id="book-select" onchange="navigateTo(this.value)">
+                <option value="">Select a Book</option>
+                <option value="1">1. Family and Friends</option>
+                <option value="2">2. Sisters and Daughters</option>
+                <option value="3">3. Decency and Kindness</option>
+            </select>
+
         </div>
     </div>
     <div id="main-content"></div>

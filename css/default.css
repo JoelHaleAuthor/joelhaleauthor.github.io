@@ -15,7 +15,7 @@ body {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-color: rgba(255, 255, 255, 0.8);
-	background-blend-mode: lighten;	
+	background-blend-mode: lighten;
 }
 div#page-header{
 	border: none ;
@@ -92,7 +92,7 @@ div.home-text {
 div.home-text img.right {
 	float: right;
 	margin: 0 0 10px 20px;
-	width: 200px; 
+	width: 200px;
 	height: auto;
 	border-radius: 8px;
 }
@@ -100,7 +100,7 @@ div.home-text img.right {
 div.home-text img.left {
 	float: left;
 	margin: 0 20px 0 0;
-	width: 100px; 
+	width: 100px;
 	height: auto;
 	border-radius: 40px;
 }
@@ -154,23 +154,23 @@ div.contact-page p#form-status {
 	width: 55% ;
 }
 
-div.contact-page form { 
+div.contact-page form {
 	margin: 0 auto 10px auto ;
-	width: 600px; 	
+	width: 600px;
 }
-div.contact-page form label { 
-	display: block; 
-	margin: 12px 0 6px; 
+div.contact-page form label {
+	display: block;
+	margin: 12px 0 6px;
 	font-weight: 600;
-	font-size: 1.5em; 
+	font-size: 1.5em;
 }
-div.contact-page form input, div.contact-page form textarea, div.contact-page form button { 
-	width: 100%; 
-	padding: 10px; 
-	font-size: 16px; 
+div.contact-page form input, div.contact-page form textarea, div.contact-page form button {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
 }
-div.contact-page form textarea { 
-	min-height: 160px; 
+div.contact-page form textarea {
+	min-height: 160px;
 }
 
 
@@ -180,11 +180,11 @@ div.book-page {
 	display: flex ;
 	margin: 30px auto 30px auto ;
 	text-align: center;
-}	
+}
 div.book-page div.book-item {
 	flex: 1 ;
 	margin: 20px ;
-	width: 250px ;	
+	width: 250px ;
 }
 div.book-page div.book-item div.book-title {
 	font-weight: bold ;
@@ -230,7 +230,7 @@ div.info-text {
     }
 
     img.expanded, div.expanded {
-      position: absolute; 
+      position: absolute;
       /*top: 100px ;
       left: 50px ;*/
 	  font-size: 2.0em ;
@@ -243,20 +243,20 @@ div#main-rect-content {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
-	height: 200px; 
+	height: 200px;
 	justify-content: center;
 	align-items: center;
 	margin: 0 auto 0 auto ;
 	padding: 10px ;
 }
 
-div.flicker-rect {	
+div.flicker-rect {
 	border-radius: 40px;
 	flex: 0 0 auto;
 	color: yellow ;
 	font-size: 2em;
 	font-weight: bold;
-	margin: 50px ;	
+	margin: 50px ;
 	text-align: center;
 	vertical-align: middle;
 }

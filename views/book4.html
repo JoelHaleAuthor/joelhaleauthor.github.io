@@ -1,0 +1,73 @@
+<div class="info-text">
+    When fragments of a hidden program surface - old photographs, a cryptic code, a name whispered
+    across continents, Alli is pulled into a conspiracy that reaches from wartime Hull to a jungle escape
+    in 1971 and into the heart of modern-day San Francisco. As corporate power, shadowy projects, and family
+    secrets collide, Alli must navigate shifting loyalties, impossible choices, and a threat that uses DNA and data as weapons.
+    <br/><br/>
+    Lost and Found: Legacy and Hope is a propulsive, emotionally charged thriller
+    where every revelation raises the stakes. Love becomes leverage, history becomes evidence,
+    and one desperate act forces a reckoning that will echo across generations. Fast, fierce, and
+    heartbreakingly human, this is a novel about what we inherit—and what we choose to save.
+</div>
+<hr style="margin: 40px ;"/>
+<div class="info-text">
+    JC "Jayce" Pullman doesn't remember entering the raffle he won. By the second night he's sharing whisky,
+    movie quotes, and far too many secrets with Alli Daws: a former public defender with an easy laugh, a quiet
+    confidence, and a father nobody can find much information about online.
+    <br/><br/>
+    Back home outside San Francisco, the easy part ends. A line of code Jayce swears he never wrote. A woman who
+    says all the right things and never once blushes. A family that has spent fifty years quietly agreeing
+    not to ask each other certain questions.
+    <br/><br/>
+    Alli has always known her family was a little different. She's about to find out exactly how different — and
+    how far someone might go to make sure it stays a secret.
+    <br/><br/>
+    The fourth novel in the Lost and Found series, this is a story about the families that find us,
+    the truths we can't outrun, and what love is worth risking when it matters most.
+</div>
+<div class="book-page">
+    <div class="book-item"></div>
+</div>
+<div id="cover-images-00"></div>
+<script type="text/javascript">
+    var oArrayB4 = [
+        { "Number": 1, "Title": "Fractured Family Tree", "URL": "01_FamilyTree.jpg" },
+        { "Number": 2, "Title": "DNA Circuit Helix", "URL": "02_DNAHelix.jpg" },
+        { "Number": 3, "Title": "Weathered Photograph Collage", "URL": "03_VintagePhoto.jpg" },
+        { "Number": 5, "Title": "Window and Light", "URL": "05_StreakedWindow.jpg" },
+        { "Number": 6, "Title": "Vortex Schematic", "URL": "06_BluePrint.jpg" },
+        { "Number": 7, "Title": "Child’s Toy and Code", "URL": "07_WoodenToy.jpg" },
+        { "Number": 8, "Title": "Passport Stamps Map", "URL": "08_WorldMap.jpg" },
+        { "Number": 9, "Title": "Memorial Bouquet and Barcode", "URL": "09_Bouquet.jpg" },
+        { "Number": 10, "Title": "Backdoor Keyhole", "URL": "10_Keyhole.jpg" },
+        { "Number": 11, "Title": "Highland Resolve", "URL": "11_AlliClear.jpg" },
+        { "Number": 12, "Title": "San Francisco Night Run", "URL": "12_AlliRunning.jpg" },
+        { "Number": 13, "Title": "The Keyhole Revelation", "URL": "13_AlliShadow.jpg" },
+        { "Number": 14, "Title": "Fog Silhouette", "URL": "14_AlliKeyhole.jpg" },
+        { "Number": 15, "Title": "Window Ghost", "URL": "15_AlliWindow.jpg" },
+        { "Number": 16, "Title": "Highland Cliff", "URL": "16_Two_figures_standing_on_moor.jpg" },
+        { "Number": 17, "Title": "The Close", "URL": "17_Couple_walking_in_stone_alley.jpg" },
+        { "Number": 18, "Title": "The Rag Doll", "URL": "18_Motorcycle_helmet_and_pocket_watch.jpg" },
+        { "Number": 19, "Title": "Ordinary Objects", "URL": "19_Rag_doll_sitting_on_counter.jpg" }
+    ];
+
+    var oTemplateB4 = "<img width='160' src='/media/covers/#url#' title='#title#' class='expandable' onclick='ExpandImage(this);'/>";
+    oTemplateB4 = "<div style='display: inline-block; width: 160px;'>" +
+        "<label style='display: block; font-weight: bold;font-size:1.5em; margin-top: 10px;'>#number#</label>" +
+        oTemplateB4 + "</div>";
+
+    function createImageB4(o){
+        return oTemplateB4.replace(/#url#/g, o.URL).replace(/#title#/g, o.Title).replace(/#number#/g, o.Number) + "\n";
+    }
+
+    function populateCoverImagesB4(){
+        var sHTML = "";
+        for (var i = 0; i < oArrayB4.length; i++){
+            sHTML += createImageB4(oArrayB4[i]);
+        }
+        document.getElementById("cover-images-00").innerHTML = sHTML;
+    }
+
+    window.setTimeout(populateCoverImagesB4, 1000);
+
+</script>
